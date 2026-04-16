@@ -1,8 +1,5 @@
-import { ArrowRight, Check, Code2, Cpu, Globe, Instagram, Layers, Lock, Terminal } from 'lucide-react';
+import { ArrowRight, Check, Code2, Instagram, Layers } from 'lucide-react';
 import { motion, useScroll } from "motion/react";
-import { ArrowRight, Check, Code2, Instagram, Layers } from "lucide-react";
-
-const heroImage = "/hero-nexus.png";
 
 function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
