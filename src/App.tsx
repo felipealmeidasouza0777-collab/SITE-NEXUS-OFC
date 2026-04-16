@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { ArrowRight, Check, Code2, Instagram, Layers } from 'lucide-react';
 import { motion, useScroll } from "motion/react";
 
