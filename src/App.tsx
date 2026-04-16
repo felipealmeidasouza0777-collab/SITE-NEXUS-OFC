@@ -154,25 +154,19 @@ export default function App() {
         </div>
       </nav>
 
-      <main className="relative z-10">
-        {/* Hero Section */}
-        <section className="relative h-screen w-full flex flex-col justify-center overflow-hidden">
-          {/* Custom Background Image & Overlay */}
-          <div className="absolute inset-0 z-0">
-            {/* 
-              Using a high-quality placeholder for the dark background with professionals.
-              Replace this URL with your custom image representing the team. 
-            */}
-            <img 
-              src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2532&auto=format&fit=crop" 
-              alt="Equipe Nexus Options IA" 
-              className="w-full h-full object-cover object-center"
-            />
-            {/* Subtle dark gradient overlay (left to right) for readability as requested */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/70 to-transparent" />
-            {/* Gentle bottom gradient to properly contrast the bottom stats */}
-            <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#0A0A0A] to-transparent" />
-          </div>
+<div className="absolute inset-0 z-0">
+  <img 
+    src="/hero-nexus.jpg"
+    alt="Equipe Nexus Options IA"
+    className="w-full h-full object-cover object-[center_top]"
+  />
+
+  {/* Overlay escuro para leitura */}
+  <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/70 to-transparent" />
+
+  {/* Fade inferior */}
+  <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#0A0A0A] to-transparent" />
+</div>
 
           {/* Main Content (Left Aligned) */}
           <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 pt-16">
