@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { ArrowRight, Check, Code2, Cpu, Globe, Instagram, Layers, Lock, Terminal } from 'lucide-react';
 import { motion, useScroll } from "motion/react";
 import { ArrowRight, Check, Code2, Instagram, Layers } from "lucide-react";
 
@@ -170,14 +170,16 @@ export default function App() {
         <section className="relative h-screen w-full flex flex-col justify-center overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
-            <img
-              src={heroImage}
-              alt="Equipe Nexus Options IA"
-              className="w-full h-full object-cover object-[center_top]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/70 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#0A0A0A] to-transparent" />
-          </div>
+  <img 
+    src="/hero-nexus.jpg"
+    alt="Equipe Nexus"
+    className="w-full h-full object-cover object-center"
+  />
+
+  <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/70 to-transparent" />
+
+  <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#0A0A0A] to-transparent" />
+</div>
 
           {/* Main Content */}
           <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 pt-16">
@@ -483,11 +485,7 @@ export default function App() {
                   title: "Advanced Engineering",
                   desc: "High-performance web applications built with modern frameworks and precise architecture.",
                 },
-                {
-                  icon: <Sparkles className="w-6 h-6 text-text-muted" />,
-                  title: "AI Integration",
-                  desc: "Intelligent systems and machine learning models seamlessly woven into your product.",
-                },
+              
                 {
                   icon: <Layers className="w-6 h-6 text-text-heading" />,
                   title: "Premium Interface",
