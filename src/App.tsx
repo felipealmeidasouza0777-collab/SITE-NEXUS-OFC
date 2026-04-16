@@ -59,6 +59,34 @@ function CustomCursor() {
   );
 }
 
+const AnimatedLetters = ({ text }: { text: string }) => {
+  return (
+    <motion.span
+      variants={{
+        hidden: { opacity: 0 },
+        show: { opacity: 1, transition: { staggerChildren: 0.02 } }
+      }}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-100px" }}
+      className="inline-block"
+    >
+      {text.split("").map((char, i) => (
+        <motion.span
+          key={i}
+          variants={{
+            hidden: { opacity: 0, y: 20, filter: "blur(8px)" },
+            show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+          }}
+          className="inline-block"
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </motion.span>
+  );
+};
+
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
@@ -109,85 +137,192 @@ export default function App() {
 
       {/* Navigation */}
       <nav 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-auto rounded-full ${
           isScrolled 
-            ? 'bg-[#0A0A0A]/80 backdrop-blur-[20px] border-b border-accent-silver/10' 
-            : 'bg-transparent border-b-0 border-transparent'
+            ? 'bg-[#0A0A0A]/90 backdrop-blur-[20px] border border-[#242424] shadow-2xl' 
+            : 'bg-[rgba(255,255,255,0.05)] backdrop-blur-md border border-[rgba(255,255,255,0.1)]'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="font-display font-bold text-text-heading tracking-widest text-xl">NEXUS</span>
-            <span className="font-mono text-accent-silver text-xs tracking-widest uppercase mt-1">SOLUTIONS IA</span>
-          </div>
+        <div className="flex items-center gap-8 px-6 py-3">
+          <span className="font-display font-bold text-[#F5F5F5] tracking-widest text-[15px]">NEXUS</span>
           
-          <div className="hidden md:flex items-center gap-8 text-sm tracking-widest uppercase">
-            <a href="#trabalhos" className="hover:text-text-heading transition-colors">Trabalhos</a>
-            <a href="#servicos" className="hover:text-text-heading transition-colors">Serviços</a>
-            <a href="#contato" className="hover:text-text-heading transition-colors">Contato</a>
+          <div className="hidden md:flex items-center gap-6 text-[11px] tracking-[2px] uppercase font-sans font-medium text-[#C0C0C0]">
+            <a href="#trabalhos" className="hover:text-white transition-colors">Trabalhos</a>
+            <a href="#servicos" className="hover:text-white transition-colors">Serviços</a>
+            <a href="#contato" className="hover:text-white transition-colors">Contato</a>
           </div>
-
-          <button className="hidden md:block px-6 py-2.5 rounded-full bg-transparent border border-[rgba(192,192,192,0.35)] text-[#C0C0C0] font-sans font-semibold text-[14px] tracking-[0.5px] transition-all duration-300 ease-out hover:border-[rgba(192,192,192,0.8)] hover:text-[#F5F5F5] hover:bg-[rgba(192,192,192,0.06)] active:translate-y-0">
-            Falar com Felipe
-          </button>
         </div>
       </nav>
 
       <main className="relative z-10">
         {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-          {/* Background Effects */}
-          <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-            {/* Diagonal Line */}
-            <div className="absolute top-[-50%] left-[50%] w-[1px] h-[200%] bg-accent-silver opacity-15 rotate-[35deg] origin-center" />
-            
-            {/* Drifting Blobs */}
-            <motion.div 
-              style={{ y: y1 }}
-              className="absolute top-[10%] right-[-10%] w-[600px] h-[600px] bg-[rgba(192,192,192,0.06)] rounded-full blur-[140px] animate-[drift-1_25s_ease-in-out_infinite]" 
+        <section className="relative h-screen w-full flex flex-col justify-center overflow-hidden">
+          {/* Custom Background Image & Overlay */}
+          <div className="absolute inset-0 z-0">
+            {/* 
+              Using a high-quality placeholder for the dark background with professionals.
+              Replace this URL with your custom image representing the team. 
+            */}
+            <img 
+              src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2532&auto=format&fit=crop" 
+              alt="Equipe Nexus Options IA" 
+              className="w-full h-full object-cover object-center"
             />
-            <motion.div 
-              style={{ y: y2 }}
-              className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-[rgba(255,255,255,0.03)] rounded-full blur-[100px] animate-[drift-2_25s_ease-in-out_infinite_reverse]" 
-            />
-            
-            {/* Noise Overlay */}
-            <div className="absolute inset-0 bg-noise opacity-[0.03] mix-blend-overlay" />
+            {/* Subtle dark gradient overlay (left to right) for readability as requested */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/70 to-transparent" />
+            {/* Gentle bottom gradient to properly contrast the bottom stats */}
+            <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#0A0A0A] to-transparent" />
           </div>
 
-          {/* Content */}
-          <div className="relative z-10 w-full max-w-4xl px-6 text-center mt-20 lg:mt-0 flex flex-col items-center justify-center">
+          {/* Main Content (Left Aligned) */}
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 pt-16">
             <motion.div
               variants={staggerContainer}
               initial="hidden"
               animate="show"
-              className="flex flex-col items-center text-center"
+              className="flex flex-col items-start text-left max-w-2xl"
             >
-              <motion.p variants={revealVariant} className="text-[10px] tracking-[5px] text-accent-silver uppercase font-sans mb-8 font-medium">
-                PARA CRIADORES DE CONTEÚDO
-              </motion.p>
-              
-              <motion.h1 variants={revealVariant} className="text-[38px] lg:text-[60px] font-display font-semibold text-text-heading leading-[1.15] mb-8 max-w-3xl">
-                Seu nome merece um espaço à altura do seu trabalho.
+              <motion.h1 
+                variants={revealVariant} 
+                className="text-[44px] md:text-[68px] font-display font-bold text-[#F5F5F5] leading-[1.05] mb-6"
+              >
+                Seu nome merece um<br />espaço à altura.
               </motion.h1>
               
-              <motion.p variants={revealVariant} className="text-[17px] text-text-body mb-12 max-w-[540px] leading-[1.7] font-light">
-                Criamos seu site pessoal profissional em até 7 dias — para você vender mais, fechar parcerias e ser levado a sério.
+              <motion.p 
+                variants={revealVariant} 
+                className="text-[16px] md:text-[18px] text-[#D4D4D4] font-sans leading-[1.6] mb-10 max-w-[500px]"
+              >
+                Criamos seu site pessoal profissional em até 7 dias — para você vender mais, fechar parcerias e ser levado a sério em seu mercado.
               </motion.p>
               
-              <motion.div variants={revealVariant} className="flex flex-col items-center">
-                <button className="w-full md:w-auto px-6 py-4 md:px-[42px] md:py-[18px] rounded-full bg-gradient-to-br from-[#D4D4D4] to-[#A0A0A0] text-[#0A0A0A] font-sans font-semibold text-[15px] tracking-[0.5px] transition-all duration-300 ease-out hover:brightness-110 hover:-translate-y-[2px] hover:shadow-[0_8px_32px_rgba(192,192,192,0.25)] active:translate-y-0 active:shadow-[0_4px_16px_rgba(192,192,192,0.15)] mb-8">
-                  Quero meu site profissional
+              <motion.div variants={revealVariant}>
+                {/* Button adapting the Nexus style to the reference white pill button layout */}
+                <button className="px-8 py-4 rounded-full bg-gradient-to-br from-[#F5F5F5] to-[#D4D4D4] text-[#0A0A0A] font-sans font-bold text-[15px] tracking-wide transition-all duration-300 hover:brightness-110 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(255,255,255,0.15)]">
+                  Falar com Felipe
                 </button>
+              </motion.div>
+            </motion.div>
+          </div>
+
+          {/* Bottom Floating Bar */}
+          <div className="absolute bottom-8 left-0 right-0 z-20 w-full max-w-7xl mx-auto px-6 md:px-12">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="relative flex flex-col md:flex-row items-start md:items-end justify-between w-full gap-6 pt-6"
+            >
+              {/* Faint top border simulating the separation in the reference image */}
+              <div className="absolute top-0 left-0 right-0 h-[1px] bg-[rgba(255,255,255,0.15)] md:mx-6" />
+              
+              {/* Stats Layout mimicking the reference */}
+              <div className="flex flex-wrap items-center gap-10 md:gap-20">
+                <div>
+                  <div className="text-[12px] text-[#9A9A9A] font-sans mb-1">Projetos Entregues</div>
+                  <div className="font-sans font-medium text-[#F5F5F5] text-[28px] md:text-[36px] leading-tight">40+</div>
+                </div>
+                <div>
+                  <div className="text-[12px] text-[#9A9A9A] font-sans mb-1">Prazo Médio</div>
+                  <div className="font-sans font-medium text-[#F5F5F5] text-[28px] md:text-[36px] leading-tight">7 Dias</div>
+                </div>
+                <div className="hidden sm:block">
+                  <div className="text-[12px] text-[#9A9A9A] font-sans mb-1">Satisfação</div>
+                  <div className="font-sans font-medium text-[#F5F5F5] text-[28px] md:text-[36px] leading-tight">100%</div>
+                </div>
+              </div>
+
+              {/* Rating Pill matching reference layout */}
+              <div className="flex items-center gap-4 bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)] backdrop-blur-md rounded-full px-4 py-2 mt-4 md:mt-0">
+                <div className="flex -space-x-2">
+                  <img src="https://picsum.photos/seed/r1/32/32" className="w-8 h-8 rounded-full border-2 border-[#141414] grayscale opacity-90" alt="Client Rate" />
+                  <img src="https://picsum.photos/seed/r2/32/32" className="w-8 h-8 rounded-full border-2 border-[#141414] grayscale opacity-90" alt="Client Rate" />
+                  <img src="https://picsum.photos/seed/r3/32/32" className="w-8 h-8 rounded-full border-2 border-[#141414] grayscale opacity-90" alt="Client Rate" />
+                </div>
+                <span className="text-[11px] text-[#D4D4D4] font-sans pr-2">
+                  Avaliado 5 estrelas no Brasil
+                </span>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Services Section */}
+        <section id="servicos" className="py-32 px-6 relative border-t border-accent-silver/10 overflow-hidden">
+          {/* White Light Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 blur-[150px] rounded-full pointer-events-none" />
+          
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="text-center mb-24">
+              <h2 className="text-[36px] md:text-[52px] font-display font-bold text-[#F5F5F5] leading-tight max-w-4xl mx-auto">
+                <AnimatedLetters text="Arquitetando o futuro da interação digital." />
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Card 1 */}
+              <motion.div 
+                variants={revealVariant}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: "-100px" }}
+                className="group relative p-10 rounded-[24px] bg-[#141414] border border-[#242424] overflow-hidden transition-all duration-500 hover:border-[rgba(255,255,255,0.2)] hover:-translate-y-2"
+              >
+                {/* Hover White Light */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
-                <div className="flex items-center justify-center gap-3 text-[11px] text-text-muted font-sans tracking-wide">
-                  <span>Entrega em 7 dias</span>
-                  <span className="w-1 h-1 rounded-full bg-text-muted/50"></span>
-                  <span>Mais de 40 sites criados</span>
-                  <span className="w-1 h-1 rounded-full bg-text-muted/50"></span>
-                  <span>Sem complicação</span>
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-full bg-[#1C1C1C] border border-[#242424] flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                    <Code2 className="w-6 h-6 text-[#C0C0C0] group-hover:text-white transition-colors" />
+                  </div>
+                  <h3 className="text-[24px] font-display font-bold text-[#F5F5F5] mb-4">
+                    Engenharia Avançada
+                  </h3>
+                  <p className="text-[16px] text-[#9A9A9A] font-sans leading-relaxed">
+                    Aplicações web de alta performance construídas com frameworks modernos e arquitetura precisa.
+                  </p>
                 </div>
               </motion.div>
+
+              {/* Card 2 */}
+              <motion.div 
+                variants={revealVariant}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: "-100px" }}
+                className="group relative p-10 rounded-[24px] bg-[#141414] border border-[#242424] overflow-hidden transition-all duration-500 hover:border-[rgba(255,255,255,0.2)] hover:-translate-y-2"
+              >
+                {/* Hover White Light */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-full bg-[#1C1C1C] border border-[#242424] flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                    <Layers className="w-6 h-6 text-[#C0C0C0] group-hover:text-white transition-colors" />
+                  </div>
+                  <h3 className="text-[24px] font-display font-bold text-[#F5F5F5] mb-4">
+                    Interface Premium
+                  </h3>
+                  <p className="text-[16px] text-[#9A9A9A] font-sans leading-relaxed">
+                    Interfaces de usuário perfeitas em cada pixel e ricas em movimento, projetadas para o espaço digital de luxo.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+
+            <motion.div 
+              variants={revealVariant}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="mt-16 text-center"
+            >
+              <button className="group relative px-[42px] py-[18px] rounded-full bg-transparent border border-[rgba(192,192,192,0.35)] text-[#C0C0C0] font-sans font-semibold text-[15px] tracking-[0.5px] overflow-hidden transition-all duration-500 hover:border-[rgba(192,192,192,0.8)] hover:text-[#F5F5F5]">
+                <div className="absolute inset-0 bg-[rgba(192,192,192,0.06)] translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" />
+                <span className="relative z-10 flex items-center gap-2">
+                  Explorar nossos serviços
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                </span>
+              </button>
             </motion.div>
           </div>
         </section>
