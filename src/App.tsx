@@ -137,31 +137,27 @@ export default function App() {
       </div>
 
       {/* Navigation */}
-      <nav
-        className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-auto rounded-full ${
-          isScrolled
-            ? "bg-[#0A0A0A]/90 backdrop-blur-[20px] border border-[#242424] shadow-2xl"
-            : "bg-[rgba(255,255,255,0.05)] backdrop-blur-md border border-[rgba(255,255,255,0.1)]"
-        }`}
-      >
-        <div className="flex items-center gap-8 px-6 py-3">
-          <span className="font-display font-bold text-[#F5F5F5] tracking-widest text-[15px]">
-            NEXUS
-          </span>
-
-          <div className="hidden md:flex items-center gap-6 text-[11px] tracking-[2px] uppercase font-sans font-medium text-[#C0C0C0]">
-            <a href="#trabalhos" className="hover:text-white transition-colors">
-              Trabalhos
-            </a>
-            <a href="#servicos" className="hover:text-white transition-colors">
-              Serviços
-            </a>
-            <a href="#contato" className="hover:text-white transition-colors">
-              Contato
-            </a>
+      <header>
+        <nav
+          aria-label="Navegação principal"
+          className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-auto rounded-full ${
+            isScrolled
+              ? "bg-[#0A0A0A]/90 backdrop-blur-[20px] border border-[#242424] shadow-2xl"
+              : "bg-[rgba(255,255,255,0.05)] backdrop-blur-md border border-[rgba(255,255,255,0.1)]"
+          }`}
+        >
+          <div className="flex items-center gap-8 px-6 py-3">
+            <span className="font-display font-bold text-[#F5F5F5] tracking-[0.2em] text-[13px] uppercase">
+              NEXUS
+            </span>
+            <ul className="hidden md:flex items-center gap-6 list-none m-0 p-0">
+              <li><a href="#trabalhos" className="text-[11px] tracking-[2px] uppercase font-medium text-[#C0C0C0] hover:text-white transition-colors">Trabalhos</a></li>
+              <li><a href="#servicos" className="text-[11px] tracking-[2px] uppercase font-medium text-[#C0C0C0] hover:text-white transition-colors">Serviços</a></li>
+              <li><a href="#contato" className="text-[11px] tracking-[2px] uppercase font-medium text-[#C0C0C0] hover:text-white transition-colors">Contato</a></li>
+            </ul>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </header>
 
       <main className="relative z-10">
         {/* Hero Section */}
@@ -185,11 +181,18 @@ export default function App() {
               variants={staggerContainer}
               initial="hidden"
               animate="show"
-              className="flex flex-col items-start text-left max-w-2xl"
+              className="flex flex-col items-start text-left max-w-[580px]"
             >
+              <motion.p
+                variants={revealVariant}
+                className="text-[11px] tracking-[3px] uppercase font-medium text-[#6A6A6A] mb-5"
+              >
+                Sites Pessoais Profissionais
+              </motion.p>
+
               <motion.h1
                 variants={revealVariant}
-                className="text-[44px] md:text-[68px] font-display font-bold text-[#F5F5F5] leading-[1.05] mb-6"
+                className="text-[48px] md:text-[72px] font-display font-bold text-[#F5F5F5] leading-[1.02] tracking-[-0.02em] mb-6"
               >
                 Seu nome merece um
                 <br />
@@ -198,13 +201,16 @@ export default function App() {
 
               <motion.p
                 variants={revealVariant}
-                className="text-[16px] md:text-[18px] text-[#D4D4D4] font-sans leading-[1.6] mb-10 max-w-[500px]"
+                className="text-[16px] text-[#9A9A9A] font-sans font-light leading-[1.7] mb-10 max-w-[440px]"
               >
-                Criamos seu site pessoal profissional em até 7 dias — para você vender mais, fechar parcerias e ser levado a sério em seu mercado.
+                Site profissional entregue em até 7 dias — para vender mais, fechar parcerias e ser levado a sério.
               </motion.p>
 
               <motion.div variants={revealVariant}>
-                <button className="px-8 py-4 rounded-full bg-gradient-to-br from-[#F5F5F5] to-[#D4D4D4] text-[#0A0A0A] font-sans font-bold text-[15px] tracking-wide transition-all duration-300 hover:brightness-110 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(255,255,255,0.15)]">
+                <button
+                  type="button"
+                  className="px-8 py-[14px] rounded-full bg-gradient-to-br from-[#F5F5F5] to-[#D4D4D4] text-[#0A0A0A] font-sans font-bold text-[14px] tracking-[0.03em] transition-all duration-300 hover:brightness-110 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(255,255,255,0.15)]"
+                >
                   Falar com Felipe
                 </button>
               </motion.div>
@@ -221,32 +227,22 @@ export default function App() {
             >
               <div className="absolute top-0 left-0 right-0 h-[1px] bg-[rgba(255,255,255,0.15)] md:mx-6" />
 
-              <div className="flex flex-wrap items-center gap-10 md:gap-20">
-                <div>
-                  <div className="text-[12px] text-[#9A9A9A] font-sans mb-1">
-                    Projetos Entregues
+              <dl className="flex flex-wrap items-center gap-10 md:gap-20">
+                {([
+                  ["40+", "Projetos"],
+                  ["7 dias", "Prazo médio"],
+                  ["100%", "Satisfação"],
+                ] as [string, string][]).map(([value, label], i) => (
+                  <div key={i} className={i === 2 ? "hidden sm:block" : ""}>
+                    <dd className="font-display font-semibold text-[#F5F5F5] text-[28px] md:text-[34px] leading-none">
+                      {value}
+                    </dd>
+                    <dt className="text-[11px] text-[#5A5A5A] font-sans tracking-[1px] uppercase mt-1">
+                      {label}
+                    </dt>
                   </div>
-                  <div className="font-sans font-medium text-[#F5F5F5] text-[28px] md:text-[36px] leading-tight">
-                    40+
-                  </div>
-                </div>
-                <div>
-                  <div className="text-[12px] text-[#9A9A9A] font-sans mb-1">
-                    Prazo Médio
-                  </div>
-                  <div className="font-sans font-medium text-[#F5F5F5] text-[28px] md:text-[36px] leading-tight">
-                    7 Dias
-                  </div>
-                </div>
-                <div className="hidden sm:block">
-                  <div className="text-[12px] text-[#9A9A9A] font-sans mb-1">
-                    Satisfação
-                  </div>
-                  <div className="font-sans font-medium text-[#F5F5F5] text-[28px] md:text-[36px] leading-tight">
-                    100%
-                  </div>
-                </div>
-              </div>
+                ))}
+              </dl>
 
               <div className="flex items-center gap-4 bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)] backdrop-blur-md rounded-full px-4 py-2 mt-4 md:mt-0">
                 <div className="flex -space-x-2">
@@ -266,8 +262,8 @@ export default function App() {
                     alt="Client Rate"
                   />
                 </div>
-                <span className="text-[11px] text-[#D4D4D4] font-sans pr-2">
-                  Avaliado 5 estrelas no Brasil
+                <span className="text-[11px] text-[#6A6A6A] font-sans pr-2 tracking-[0.5px]">
+                  5 estrelas no Brasil
                 </span>
               </div>
             </motion.div>
@@ -283,8 +279,8 @@ export default function App() {
 
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-24">
-              <h2 className="text-[36px] md:text-[52px] font-display font-bold text-[#F5F5F5] leading-tight max-w-4xl mx-auto">
-                <AnimatedLetters text="Arquitetando o futuro da interação digital." />
+              <h2 className="text-[34px] md:text-[50px] font-display font-bold text-[#F5F5F5] leading-[1.1] tracking-[-0.02em] max-w-3xl mx-auto">
+                <AnimatedLetters text="Cada detalhe construído para converter." />
               </h2>
             </div>
 
@@ -302,10 +298,10 @@ export default function App() {
                   <div className="w-14 h-14 rounded-full bg-[#1C1C1C] border border-[#242424] flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                     <Code2 className="w-6 h-6 text-[#C0C0C0] group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-[24px] font-display font-bold text-[#F5F5F5] mb-4">
+                  <h3 className="text-[20px] font-display font-bold text-[#F5F5F5] leading-snug mb-3">
                     Engenharia Avançada
                   </h3>
-                  <p className="text-[16px] text-[#9A9A9A] font-sans leading-relaxed">
+                  <p className="text-[15px] text-[#6A6A6A] font-sans font-light leading-[1.7]">
                     Aplicações web de alta performance construídas com frameworks modernos e arquitetura precisa.
                   </p>
                 </div>
@@ -324,10 +320,10 @@ export default function App() {
                   <div className="w-14 h-14 rounded-full bg-[#1C1C1C] border border-[#242424] flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                     <Layers className="w-6 h-6 text-[#C0C0C0] group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-[24px] font-display font-bold text-[#F5F5F5] mb-4">
+                  <h3 className="text-[20px] font-display font-bold text-[#F5F5F5] leading-snug mb-3">
                     Interface Premium
                   </h3>
-                  <p className="text-[16px] text-[#9A9A9A] font-sans leading-relaxed">
+                  <p className="text-[15px] text-[#6A6A6A] font-sans font-light leading-[1.7]">
                     Interfaces de usuário perfeitas em cada pixel e ricas em movimento, projetadas para o espaço digital de luxo.
                   </p>
                 </div>
@@ -364,12 +360,12 @@ export default function App() {
             >
               <motion.h2
                 variants={revealVariant}
-                className="text-[48px] font-display font-bold text-[#F5F5F5] mb-4 leading-tight"
+                className="text-[40px] md:text-[52px] font-display font-bold text-[#F5F5F5] mb-4 leading-[1.08] tracking-[-0.02em] max-w-2xl"
               >
-                Sites que já estão trabalhando por nossos clientes
+                Resultados reais para pessoas reais.
               </motion.h2>
-              <motion.p variants={revealVariant} className="text-[16px] text-[#9A9A9A] font-sans">
-                Cada projeto foi feito para uma pessoa real — <br className="hidden md:block" /> com objetivo real e resultado real.
+              <motion.p variants={revealVariant} className="text-[15px] text-[#6A6A6A] font-sans font-light leading-[1.7] max-w-md">
+                Cada projeto entregue com objetivo claro e resultado mensurável.
               </motion.p>
             </motion.div>
 
@@ -411,10 +407,10 @@ export default function App() {
                     />
                   </div>
                   <div className="p-[20px] flex flex-col">
-                    <h3 className="text-[18px] font-display font-bold text-[#F5F5F5] mb-2">
+                    <h3 className="text-[13px] font-sans font-semibold text-[#F5F5F5] tracking-[1.5px] uppercase mb-2">
                       {item.niche}
                     </h3>
-                    <p className="text-[15px] text-[#9A9A9A] font-sans mb-6 leading-relaxed">
+                    <p className="text-[14px] text-[#6A6A6A] font-sans font-light leading-[1.7] mb-6">
                       {item.result}
                     </p>
                     <a
@@ -443,72 +439,7 @@ export default function App() {
           </div>
         </section>
 
-        {/* Capabilities Section */}
-        <section
-          id="capabilities"
-          className="py-32 px-6 relative"
-        >
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: "-100px" }}
-              className="mb-20"
-            >
-              <motion.h2
-                variants={revealVariant}
-                className="text-sm font-mono text-text-muted uppercase tracking-widest mb-4"
-              >
-                01 // Capabilities
-              </motion.h2>
-              <motion.h3
-                variants={revealVariant}
-                className="text-4xl md:text-5xl font-display font-bold text-text-heading max-w-2xl leading-tight"
-              >
-                Architecting the future of digital interaction.
-              </motion.h3>
-            </motion.div>
-
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: "-100px" }}
-              className="grid md:grid-cols-3 gap-6"
-            >
-              {[
-                {
-                  icon: <Code2 className="w-6 h-6 text-accent-silver" />,
-                  title: "Advanced Engineering",
-                  desc: "High-performance web applications built with modern frameworks and precise architecture.",
-                },
-              
-                {
-                  icon: <Layers className="w-6 h-6 text-text-heading" />,
-                  title: "Premium Interface",
-                  desc: "Pixel-perfect, motion-rich user interfaces designed for the luxury digital space.",
-                },
-              ].map((service, i) => (
-                <motion.div
-                  key={i}
-                  variants={revealVariant}
-                  className="glass-panel p-8 rounded-2xl hover:bg-bg-surface-light transition-colors group"
-                >
-                  <div className="w-12 h-12 rounded-lg bg-bg-base border border-accent-silver/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    {service.icon}
-                  </div>
-                  <h4 className="text-xl font-display font-bold text-text-heading mb-3">
-                    {service.title}
-                  </h4>
-                  <p className="text-text-body font-light leading-relaxed">
-                    {service.desc}
-                  </p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
+        {/* Capabilities Section — removed: duplicate of Services */}
 
         {/* Pricing Section */}
         <section
@@ -525,12 +456,14 @@ export default function App() {
             >
               <motion.h2
                 variants={revealVariant}
-                className="text-[48px] font-display font-bold text-[#F5F5F5] mb-4 leading-tight"
+                className="text-[40px] md:text-[52px] font-display font-bold text-[#F5F5F5] mb-4 leading-[1.08] tracking-[-0.02em]"
               >
-                Quanto custa ter um site que funciona de verdade?
+                Investimento claro,
+                <br />
+                resultado previsível.
               </motion.h2>
-              <motion.p variants={revealVariant} className="text-[16px] text-[#9A9A9A] font-sans">
-                Escolha o que faz sentido para o seu momento.
+              <motion.p variants={revealVariant} className="text-[15px] text-[#6A6A6A] font-sans font-light leading-[1.7]">
+                Escolha o plano certo para o seu momento.
               </motion.p>
             </motion.div>
 
@@ -689,9 +622,9 @@ export default function App() {
             >
               <motion.h2
                 variants={revealVariant}
-                className="text-[44px] font-display font-bold text-[#F5F5F5] leading-tight"
+                className="text-[40px] md:text-[52px] font-display font-bold text-[#F5F5F5] leading-[1.08] tracking-[-0.02em] max-w-xl"
               >
-                Quem já tem, não quer mais ficar sem
+                O que dizem quem já tem.
               </motion.h2>
             </motion.div>
 
@@ -730,25 +663,25 @@ export default function App() {
                   <div className="text-[#C0C0C0] text-[14px] tracking-widest mb-6">
                     ★★★★★
                   </div>
-                  <p className="text-[15px] text-[#D4D4D4] font-sans italic leading-[1.75] mb-8 flex-1">
-                    "{item.quote}"
-                  </p>
-                  <div className="flex items-center gap-4 mt-auto">
+                  <blockquote className="text-[15px] text-[#C0C0C0] font-sans font-light italic leading-[1.8] mb-8 flex-1">
+                    “{item.quote}”
+                  </blockquote>
+                  <footer className="flex items-center gap-4 mt-auto">
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-[44px] h-[44px] rounded-full object-cover grayscale opacity-80"
+                      className="w-[40px] h-[40px] rounded-full object-cover grayscale opacity-70"
                       referrerPolicy="no-referrer"
                     />
                     <div>
-                      <div className="text-[#F5F5F5] font-bold font-display">
+                      <p className="text-[14px] text-[#F5F5F5] font-semibold font-display leading-none">
                         {item.name}
-                      </div>
-                      <div className="text-[13px] text-[#9A9A9A] font-sans mt-0.5">
+                      </p>
+                      <p className="text-[12px] text-[#6A6A6A] font-sans mt-1 tracking-[0.3px]">
                         {item.niche}
-                      </div>
+                      </p>
                     </div>
-                  </div>
+                  </footer>
                 </motion.div>
               ))}
             </motion.div>
@@ -772,29 +705,31 @@ export default function App() {
             >
               <motion.h2
                 variants={revealVariant}
-                className="text-[36px] md:text-[54px] font-display font-bold text-[#F5F5F5] leading-tight mb-6 max-w-3xl"
+                className="text-[36px] md:text-[52px] font-display font-bold text-[#F5F5F5] leading-[1.08] tracking-[-0.02em] mb-5 max-w-2xl"
               >
-                Você já tem o conteúdo. Falta o espaço certo para ele brilhar.
+                Pronto para ter um site que trabalha por você?
               </motion.h2>
               <motion.p
                 variants={revealVariant}
-                className="text-[16px] text-[#9A9A9A] font-sans mb-12 max-w-[480px] leading-relaxed"
+                className="text-[15px] text-[#6A6A6A] font-sans font-light leading-[1.7] mb-12 max-w-[400px]"
               >
-                Respondo toda mensagem em menos de 1 hora. <br className="hidden md:block" />
-                Sem formulário, sem enrolação — só uma conversa.
+                Respondo em menos de 1 hora. Sem formulário, sem enrolação.
               </motion.p>
 
               <motion.div variants={revealVariant}>
-                <button className="w-full md:w-auto px-6 py-4 md:px-[42px] md:py-[18px] rounded-full bg-gradient-to-br from-[#D4D4D4] to-[#A0A0A0] text-[#0A0A0A] font-sans font-semibold text-[15px] tracking-[0.5px] transition-all duration-300 ease-out hover:brightness-110 hover:-translate-y-[2px] hover:shadow-[0_8px_32px_rgba(192,192,192,0.25)] active:translate-y-0 active:shadow-[0_4px_16px_rgba(192,192,192,0.15)]">
+                <button
+                  type="button"
+                  className="w-full md:w-auto px-10 py-[15px] rounded-full bg-gradient-to-br from-[#D4D4D4] to-[#A0A0A0] text-[#0A0A0A] font-sans font-bold text-[14px] tracking-[0.03em] transition-all duration-300 ease-out hover:brightness-110 hover:-translate-y-[2px] hover:shadow-[0_8px_32px_rgba(192,192,192,0.25)] active:translate-y-0"
+                >
                   Falar com Felipe agora
                 </button>
               </motion.div>
 
               <motion.div
                 variants={revealVariant}
-                className="mt-6 flex items-center justify-center gap-2 text-[12px] text-[#5A5A5A] font-sans"
+                className="mt-5 flex items-center justify-center gap-2 text-[11px] text-[#4A4A4A] font-sans tracking-[0.5px]"
               >
-                <span>🔒 Sem compromisso. Totalmente gratuito conversar.</span>
+                <span>Sem compromisso · Totalmente gratuito</span>
               </motion.div>
             </motion.div>
           </div>
@@ -817,9 +752,9 @@ export default function App() {
             </span>
           </div>
 
-          <div className="text-[13px] font-sans text-[#5A5A5A] text-center">
+          <small className="text-[11px] font-sans text-[#3A3A3A] text-center tracking-[0.5px]">
             © 2025 Nexus Solutions IA
-          </div>
+          </small>
 
           <a href="#" className="text-[#5A5A5A] hover:text-[#C0C0C0] transition-colors">
             <Instagram className="w-5 h-5" />
