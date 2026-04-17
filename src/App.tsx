@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ArrowRight, Check, Code2, Instagram, Layers } from 'lucide-react';
 import { motion, useScroll } from "motion/react";
-import heroImage from './img/hero-nexus.jpg';
+import heroImage from './img/heroo-nexus.jpg';
 
 function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
