@@ -176,7 +176,7 @@ export default function App() {
           </div>
 
           {/* Main Content */}
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 pt-16">
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 pt-8 sm:pt-16">
             <motion.div
               variants={staggerContainer}
               initial="hidden"
@@ -192,7 +192,7 @@ export default function App() {
 
               <motion.h1
                 variants={revealVariant}
-                className="text-[48px] md:text-[72px] font-display font-bold text-[#F5F5F5] leading-[1.05] tracking-[-0.02em] mb-8"
+                className="text-[48px] sm:text-[56px] md:text-[72px] font-display font-bold text-[#F5F5F5] leading-[1.05] tracking-[-0.02em] mb-8"
               >
                 Seu nome merece um
                 <br />
@@ -211,7 +211,7 @@ export default function App() {
                   type="button"
                   className="px-10 py-[16px] rounded-full bg-gradient-to-br from-[#F5F5F5] to-[#D4D4D4] text-[#0A0A0A] font-sans font-bold text-[14px] tracking-[0.03em] transition-all duration-300 hover:brightness-110 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(255,255,255,0.15)]"
                 >
-                  Falar com Felipe
+                  Fale conosco
                 </button>
               </motion.div>
             </motion.div>
@@ -248,17 +248,17 @@ export default function App() {
                 <div className="flex -space-x-2">
                   <img
                     src="https://picsum.photos/seed/r1/32/32"
-                    className="w-8 h-8 rounded-full border-2 border-[#141414] grayscale opacity-90"
+                    className="w-8 h-8 rounded-full border-2 border-[#141414] opacity-90"
                     alt="Client Rate"
                   />
                   <img
                     src="https://picsum.photos/seed/r2/32/32"
-                    className="w-8 h-8 rounded-full border-2 border-[#141414] grayscale opacity-90"
+                    className="w-8 h-8 rounded-full border-2 border-[#141414] opacity-90"
                     alt="Client Rate"
                   />
                   <img
                     src="https://picsum.photos/seed/r3/32/32"
-                    className="w-8 h-8 rounded-full border-2 border-[#141414] grayscale opacity-90"
+                    className="w-8 h-8 rounded-full border-2 border-[#141414] opacity-90"
                     alt="Client Rate"
                   />
                 </div>
@@ -329,22 +329,6 @@ export default function App() {
                 </div>
               </motion.div>
             </div>
-
-            <motion.div
-              variants={revealVariant}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="mt-16 text-center"
-            >
-              <button className="group relative px-[42px] py-[18px] rounded-full bg-transparent border border-[rgba(192,192,192,0.35)] text-[#C0C0C0] font-sans font-semibold text-[15px] tracking-[0.5px] overflow-hidden transition-all duration-500 hover:border-[rgba(192,192,192,0.8)] hover:text-[#F5F5F5]">
-                <div className="absolute inset-0 bg-[rgba(192,192,192,0.06)] translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" />
-                <span className="relative z-10 flex items-center gap-2">
-                  Explorar nossos serviços
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </span>
-              </button>
-            </motion.div>
           </div>
         </section>
 
@@ -413,13 +397,6 @@ export default function App() {
                     <p className="text-[15px] text-[#6A6A6A] font-sans font-light leading-[1.7] mb-6">
                       {item.result}
                     </p>
-                    <a
-                      href="#"
-                      className="group/link mt-auto inline-flex items-center text-[13px] font-sans font-semibold text-[#C0C0C0] hover:underline underline-offset-[3px] decoration-1 transition-all"
-                    >
-                      Ver projeto
-                      <ArrowRight className="w-4 h-4 ml-1 transition-transform duration-300 group-hover/link:translate-x-1" />
-                    </a>
                   </div>
                 </motion.div>
               ))}
@@ -670,7 +647,7 @@ export default function App() {
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-[40px] h-[40px] rounded-full object-cover grayscale opacity-70"
+                      className="w-[40px] h-[40px] rounded-full object-cover opacity-70"
                       referrerPolicy="no-referrer"
                     />
                     <div>
@@ -721,7 +698,7 @@ export default function App() {
                   type="button"
                   className="w-full md:w-auto px-10 py-[15px] rounded-full bg-gradient-to-br from-[#D4D4D4] to-[#A0A0A0] text-[#0A0A0A] font-sans font-bold text-[14px] tracking-[0.03em] transition-all duration-300 ease-out hover:brightness-110 hover:-translate-y-[2px] hover:shadow-[0_8px_32px_rgba(192,192,192,0.25)] active:translate-y-0"
                 >
-                  Falar com Felipe agora
+                  Fale conosco
                 </button>
               </motion.div>
 
