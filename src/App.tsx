@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArrowRight, Check, Code2, Instagram, Layers } from 'lucide-react';
-import { motion, useScroll } from "motion/react";
+import { motion } from "motion/react";
 import heroImage from './img/heroo-nexus.jpg';
 
 function CustomCursor() {
@@ -95,7 +95,6 @@ const AnimatedLetters = ({ text }: { text: string }) => {
 
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { scrollY } = useScroll();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -193,7 +192,7 @@ export default function App() {
 
               <motion.h1
                 variants={revealVariant}
-                className="text-[48px] md:text-[72px] font-display font-bold text-[#F5F5F5] leading-[1.02] tracking-[-0.02em] mb-6"
+                className="text-[48px] md:text-[72px] font-display font-bold text-[#F5F5F5] leading-[1.05] tracking-[-0.02em] mb-8"
               >
                 Seu nome merece um
                 <br />
@@ -202,7 +201,7 @@ export default function App() {
 
               <motion.p
                 variants={revealVariant}
-                className="text-[16px] text-[#9A9A9A] font-sans font-light leading-[1.7] mb-10 max-w-[440px]"
+                className="text-[16px] md:text-[18px] text-[#9A9A9A] font-sans font-light leading-[1.8] mb-12 max-w-[440px]"
               >
                 Site profissional entregue em até 7 dias — para vender mais, fechar parcerias e ser levado a sério.
               </motion.p>
@@ -210,7 +209,7 @@ export default function App() {
               <motion.div variants={revealVariant}>
                 <button
                   type="button"
-                  className="px-8 py-[14px] rounded-full bg-gradient-to-br from-[#F5F5F5] to-[#D4D4D4] text-[#0A0A0A] font-sans font-bold text-[14px] tracking-[0.03em] transition-all duration-300 hover:brightness-110 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(255,255,255,0.15)]"
+                  className="px-10 py-[16px] rounded-full bg-gradient-to-br from-[#F5F5F5] to-[#D4D4D4] text-[#0A0A0A] font-sans font-bold text-[14px] tracking-[0.03em] transition-all duration-300 hover:brightness-110 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(255,255,255,0.15)]"
                 >
                   Falar com Felipe
                 </button>
@@ -279,8 +278,8 @@ export default function App() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 blur-[150px] rounded-full pointer-events-none" />
 
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-24">
-              <h2 className="text-[34px] md:text-[50px] font-display font-bold text-[#F5F5F5] leading-[1.1] tracking-[-0.02em] max-w-3xl mx-auto">
+            <div className="text-center mb-20">
+              <h2 className="text-[34px] md:text-[52px] font-display font-bold text-[#F5F5F5] leading-[1.1] tracking-[-0.02em] max-w-3xl mx-auto">
                 <AnimatedLetters text="Cada detalhe construído para converter." />
               </h2>
             </div>
@@ -299,10 +298,10 @@ export default function App() {
                   <div className="w-14 h-14 rounded-full bg-[#1C1C1C] border border-[#242424] flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                     <Code2 className="w-6 h-6 text-[#C0C0C0] group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-[20px] font-display font-bold text-[#F5F5F5] leading-snug mb-3">
+                  <h3 className="text-[22px] font-display font-bold text-[#F5F5F5] leading-snug mb-4">
                     Engenharia Avançada
                   </h3>
-                  <p className="text-[15px] text-[#6A6A6A] font-sans font-light leading-[1.7]">
+                  <p className="text-[16px] text-[#6A6A6A] font-sans font-light leading-[1.7]">
                     Aplicações web de alta performance construídas com frameworks modernos e arquitetura precisa.
                   </p>
                 </div>
@@ -321,10 +320,10 @@ export default function App() {
                   <div className="w-14 h-14 rounded-full bg-[#1C1C1C] border border-[#242424] flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                     <Layers className="w-6 h-6 text-[#C0C0C0] group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-[20px] font-display font-bold text-[#F5F5F5] leading-snug mb-3">
+                  <h3 className="text-[22px] font-display font-bold text-[#F5F5F5] leading-snug mb-4">
                     Interface Premium
                   </h3>
-                  <p className="text-[15px] text-[#6A6A6A] font-sans font-light leading-[1.7]">
+                  <p className="text-[16px] text-[#6A6A6A] font-sans font-light leading-[1.7]">
                     Interfaces de usuário perfeitas em cada pixel e ricas em movimento, projetadas para o espaço digital de luxo.
                   </p>
                 </div>
@@ -361,11 +360,11 @@ export default function App() {
             >
               <motion.h2
                 variants={revealVariant}
-                className="text-[40px] md:text-[52px] font-display font-bold text-[#F5F5F5] mb-4 leading-[1.08] tracking-[-0.02em] max-w-2xl"
+                className="text-[42px] md:text-[56px] font-display font-bold text-[#F5F5F5] mb-6 leading-[1.08] tracking-[-0.02em] max-w-2xl"
               >
                 Resultados reais para pessoas reais.
               </motion.h2>
-              <motion.p variants={revealVariant} className="text-[15px] text-[#6A6A6A] font-sans font-light leading-[1.7] max-w-md">
+              <motion.p variants={revealVariant} className="text-[16px] md:text-[18px] text-[#6A6A6A] font-sans font-light leading-[1.8] max-w-md">
                 Cada projeto entregue com objetivo claro e resultado mensurável.
               </motion.p>
             </motion.div>
@@ -408,10 +407,10 @@ export default function App() {
                     />
                   </div>
                   <div className="p-[20px] flex flex-col">
-                    <h3 className="text-[13px] font-sans font-semibold text-[#F5F5F5] tracking-[1.5px] uppercase mb-2">
+                    <h3 className="text-[14px] font-sans font-semibold text-[#F5F5F5] tracking-[1.5px] uppercase mb-3">
                       {item.niche}
                     </h3>
-                    <p className="text-[14px] text-[#6A6A6A] font-sans font-light leading-[1.7] mb-6">
+                    <p className="text-[15px] text-[#6A6A6A] font-sans font-light leading-[1.7] mb-6">
                       {item.result}
                     </p>
                     <a
@@ -440,7 +439,7 @@ export default function App() {
           </div>
         </section>
 
-        {/* Capabilities Section — removed: duplicate of Services */}
+
 
         {/* Pricing Section */}
         <section
@@ -457,13 +456,13 @@ export default function App() {
             >
               <motion.h2
                 variants={revealVariant}
-                className="text-[40px] md:text-[52px] font-display font-bold text-[#F5F5F5] mb-4 leading-[1.08] tracking-[-0.02em]"
+                className="text-[42px] md:text-[56px] font-display font-bold text-[#F5F5F5] mb-6 leading-[1.08] tracking-[-0.02em]"
               >
                 Investimento claro,
                 <br />
                 resultado previsível.
               </motion.h2>
-              <motion.p variants={revealVariant} className="text-[15px] text-[#6A6A6A] font-sans font-light leading-[1.7]">
+              <motion.p variants={revealVariant} className="text-[16px] md:text-[18px] text-[#6A6A6A] font-sans font-light leading-[1.8]">
                 Escolha o plano certo para o seu momento.
               </motion.p>
             </motion.div>
@@ -480,16 +479,16 @@ export default function App() {
                 className="glass-panel p-8 rounded-[24px] border border-accent-silver/10 flex flex-col h-full"
               >
                 <div className="mb-6">
-                  <h3 className="text-xl font-display font-bold text-text-heading mb-2">
+                  <h3 className="text-xl font-display font-bold text-text-heading mb-3">
                     Presença Básica
                   </h3>
-                  <div className="flex items-baseline gap-1 mb-4">
+                  <div className="flex items-baseline gap-1 mb-6">
                     <span className="text-2xl text-text-body/60 font-medium">R$</span>
-                    <span className="text-[48px] font-bold text-text-heading leading-none">
+                    <span className="text-[52px] font-bold text-text-heading leading-none">
                       347
                     </span>
                   </div>
-                  <p className="text-[15px] text-[#9A9A9A] font-sans leading-relaxed">
+                  <p className="text-[16px] text-[#9A9A9A] font-sans leading-relaxed mb-8">
                     Para quem quer dar o primeiro passo com o pé direito.
                   </p>
                 </div>
@@ -522,16 +521,16 @@ export default function App() {
                 </div>
 
                 <div className="mb-6">
-                  <h3 className="text-xl font-display font-bold text-text-heading mb-2">
+                  <h3 className="text-xl font-display font-bold text-text-heading mb-3">
                     Presença Profissional
                   </h3>
-                  <div className="flex items-baseline gap-1 mb-4">
+                  <div className="flex items-baseline gap-1 mb-6">
                     <span className="text-2xl text-text-body/60 font-medium">R$</span>
-                    <span className="text-[48px] font-bold text-text-heading leading-none">
+                    <span className="text-[52px] font-bold text-text-heading leading-none">
                       697
                     </span>
                   </div>
-                  <p className="text-[15px] text-[#9A9A9A] font-sans leading-relaxed">
+                  <p className="text-[16px] text-[#9A9A9A] font-sans leading-relaxed mb-8">
                     Para quem quer ser levado a sério e vender pelo site.
                   </p>
                 </div>
@@ -560,16 +559,16 @@ export default function App() {
                 className="glass-panel p-8 rounded-[24px] border border-accent-silver/10 flex flex-col h-full"
               >
                 <div className="mb-6">
-                  <h3 className="text-xl font-display font-bold text-text-heading mb-2">
+                  <h3 className="text-xl font-display font-bold text-text-heading mb-3">
                     Presença de Autoridade
                   </h3>
-                  <div className="flex items-baseline gap-1 mb-4">
+                  <div className="flex items-baseline gap-1 mb-6">
                     <span className="text-2xl text-text-body/60 font-medium">R$</span>
-                    <span className="text-[48px] font-bold text-text-heading leading-none">
+                    <span className="text-[52px] font-bold text-text-heading leading-none">
                       1.397
                     </span>
                   </div>
-                  <p className="text-[15px] text-[#9A9A9A] font-sans leading-relaxed">
+                  <p className="text-[16px] text-[#9A9A9A] font-sans leading-relaxed mb-8">
                     Para quem quer se posicionar como referência no seu nicho.
                   </p>
                 </div>
@@ -623,7 +622,7 @@ export default function App() {
             >
               <motion.h2
                 variants={revealVariant}
-                className="text-[40px] md:text-[52px] font-display font-bold text-[#F5F5F5] leading-[1.08] tracking-[-0.02em] max-w-xl"
+                className="text-[42px] md:text-[56px] font-display font-bold text-[#F5F5F5] leading-[1.08] tracking-[-0.02em] max-w-xl"
               >
                 O que dizem quem já tem.
               </motion.h2>
@@ -706,13 +705,13 @@ export default function App() {
             >
               <motion.h2
                 variants={revealVariant}
-                className="text-[36px] md:text-[52px] font-display font-bold text-[#F5F5F5] leading-[1.08] tracking-[-0.02em] mb-5 max-w-2xl"
+                className="text-[38px] md:text-[56px] font-display font-bold text-[#F5F5F5] leading-[1.08] tracking-[-0.02em] mb-6 max-w-2xl"
               >
                 Pronto para ter um site que trabalha por você?
               </motion.h2>
               <motion.p
                 variants={revealVariant}
-                className="text-[15px] text-[#6A6A6A] font-sans font-light leading-[1.7] mb-12 max-w-[400px]"
+                className="text-[16px] md:text-[18px] text-[#6A6A6A] font-sans font-light leading-[1.8] mb-14 max-w-[400px]"
               >
                 Respondo em menos de 1 hora. Sem formulário, sem enrolação.
               </motion.p>
@@ -754,7 +753,7 @@ export default function App() {
           </div>
 
           <small className="text-[11px] font-sans text-[#3A3A3A] text-center tracking-[0.5px]">
-            © 2025 Nexus Solutions IA
+            © 2026 Nexus Solutions IA
           </small>
 
           <a href="#" className="text-[#5A5A5A] hover:text-[#C0C0C0] transition-colors">
